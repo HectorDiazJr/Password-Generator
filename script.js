@@ -16,12 +16,19 @@ var lowerCon
 var numberCon
 var symbolCon
 //ask for lenght of password
+//function to assure correct lenght 
+passwordlenght();
+function passwordlenght(){
 pwlenght = prompt("how long would you like your password to be, between 8-128?")
 if (pwlenght < 8 || pwlenght > 128){
-  prompt ("must be between 8-128")
+  //calling function to repeat itself if the correct lenght password is not picked
+  passwordlenght();
+  //changed prompt to repeat the function----need to start function from event listener 
+  //prompt ("must be between 8-128")
 }
 else {
   alert("nice lenght selection");
+}
 }
   //convert to a number
   pwlenght = +pwlenght;
@@ -57,7 +64,8 @@ for (var i = 0; i < pwlenght; i++){
   password = userpw[Math.floor(Math.random() * userpw.length - 1)]
   console.log(password);
 }
-//return password
+//need to return the result to idpassword
+return password = document.getElementById("#password");
 
 
 var userpw = ""
