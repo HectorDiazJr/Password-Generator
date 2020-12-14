@@ -22,6 +22,7 @@ function passwordlenght(){
 pwlenght = prompt("how long would you like your password to be, between 8-128?")
 if (pwlenght < 8 || pwlenght > 128){
   //calling function to repeat itself if the correct lenght password is not picked
+  alert("your selection must be between 8-128")
   passwordlenght();
   //changed prompt to repeat the function----need to start function from event listener 
   //prompt ("must be between 8-128")
@@ -34,12 +35,21 @@ else {
   pwlenght = +pwlenght;
   console.log(typeof(pwlenght));
   console.log(pwlenght);
-// ask if these characters are wanted 
+// ask if these characters are wanted by a function to return if none is selected
+properSelection();
+function properSelection(){
 upperCon = confirm("do you want to use upper case?")
 lowerCon = confirm("do you want to use lower case?")
 numberCon = confirm("do you want to use numbers?")
 symbolCon = confirm("do you want to use symbols?")
 console.log(upperCon,lowerCon, numberCon, symbolCon);
+//assure at least one selection is made
+//why can't === flase be used in this case?
+if (upperCon !== true && lowerCon !== true && numberCon !== true && symbolCon !== true){
+  alert("you must at least select one option");
+  properSelection();
+}
+}
 //add to password if wanted
 if (upperCon){
   userpw = "QWERTYUIOPASDFGHJKLZXCVBNM"
@@ -65,7 +75,7 @@ for (var i = 0; i < pwlenght; i++){
   console.log(password);
 }
 //need to return the result to idpassword
-return password = document.getElementById("#password");
+//return password = document.getElementById("#password");
 
 
 var userpw = ""
