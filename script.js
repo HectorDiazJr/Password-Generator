@@ -35,7 +35,7 @@ else {
   pwlenght = +pwlenght;
   console.log(typeof(pwlenght));
   console.log(pwlenght);
-// ask if these characters are wanted by a function to return if none is selected
+// ask if these characters are wanted by a function to start over if none is selected
 properSelection();
 function properSelection(){
 upperCon = confirm("do you want to use upper case?")
@@ -75,7 +75,13 @@ for (var i = 0; i < pwlenght; i++){
   console.log(password);
 }
 //need to return the result to idpassword
-//return password = document.getElementById("#password");
+//when this is not commented out the page doesn't work
+//what is the difference or writing it like this
+//var insertPassword = document.querySelector("#password");
+//return insertPassword = password;
+//return password = document.getElementById("password");
+//var insertPassword = document.querySelector("#password");
+//return insertPassword.textContent("password");
 
 
 var userpw = ""
