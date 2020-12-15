@@ -32,6 +32,7 @@ the result went into another sting called password. this is the string that woul
 
 
 
+below is an image of the deployed webpage 
 
 ![alt screen shot of web page](assets/pw-gen-screenshot.png)
 

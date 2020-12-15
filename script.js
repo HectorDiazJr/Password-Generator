@@ -3,11 +3,16 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  passwordlenght();
+  //var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 }
+
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 //variables
 var pwlenght
@@ -15,64 +20,71 @@ var upperCon
 var lowerCon
 var numberCon
 var symbolCon
+
+
+function passwordlenght() {
+  pwlenght = prompt("how long would you like your password to be, between 8-128?")
+  if (pwlenght < 8 || pwlenght > 128) {
+    //calling function to repeat itself if the correct lenght password is not picked
+    alert("your selection must be between 8-128")
+    passwordlenght();
+    //changed prompt to repeat the function----need to start function from event listener 
+    //prompt ("must be between 8-128")
+  }
+  else {
+    alert("nice lenght selection");
+  }
+pwlenght = +pwlenght;
+console.log(typeof (pwlenght));
+console.log(pwlenght);
+properSelection()
+}
 //ask for lenght of password
 //function to assure correct lenght 
-passwordlenght();
-function passwordlenght(){
-pwlenght = prompt("how long would you like your password to be, between 8-128?")
-if (pwlenght < 8 || pwlenght > 128){
-  //calling function to repeat itself if the correct lenght password is not picked
-  alert("your selection must be between 8-128")
-  passwordlenght();
-  //changed prompt to repeat the function----need to start function from event listener 
-  //prompt ("must be between 8-128")
-}
-else {
-  alert("nice lenght selection");
-}
-}
-  //convert to a number
-  pwlenght = +pwlenght;
-  console.log(typeof(pwlenght));
-  console.log(pwlenght);
+
+
+//convert to a number
+
 // ask if these characters are wanted by a function to start over if none is selected
-properSelection();
-function properSelection(){
-upperCon = confirm("do you want to use upper case?")
-lowerCon = confirm("do you want to use lower case?")
-numberCon = confirm("do you want to use numbers?")
-symbolCon = confirm("do you want to use symbols?")
-console.log(upperCon,lowerCon, numberCon, symbolCon);
-//assure at least one selection is made
-//why can't === flase be used in this case?
-if (upperCon !== true && lowerCon !== true && numberCon !== true && symbolCon !== true){
-  alert("you must at least select one option");
-  properSelection();
-}
-}
+
+function properSelection() {
+  upperCon = confirm("do you want to use upper case?")
+  lowerCon = confirm("do you want to use lower case?")
+  numberCon = confirm("do you want to use numbers?")
+  symbolCon = confirm("do you want to use symbols?")
+  console.log(upperCon, lowerCon, numberCon, symbolCon);
+  //assure at least one selection is made
+  //why can't === flase be used in this case?
+  if (upperCon !== true && lowerCon !== true && numberCon !== true && symbolCon !== true) {
+    alert("you must at least select one option");
+    properSelection();
+  }
+
 //add to password if wanted
-if (upperCon){
+if (upperCon) {
   userpw = "QWERTYUIOPASDFGHJKLZXCVBNM"
   console.log(userpw);
 }
 //add to password if wanted
-if (lowerCon){
+if (lowerCon) {
   userpw += "qwertyuiuiopasdfghjklzxcvbnm"
   console.log(userpw);
 }
 //add to password if wanted
-if (numberCon){
+if (numberCon) {
   userpw += "1234567890"
   console.log(userpw);
 }
-if (symbolCon){
+if (symbolCon) {
   userpw += "!@#$%^&*()"
   console.log(userpw);
 }
 //add to password if wanted
-for (var i = 0; i < pwlenght; i++){
-  password = userpw[Math.floor(Math.random() * userpw.length - 1)]
+for (var i = 0; i < pwlenght; i++) {
+  password += userpw[Math.floor(Math.random() * userpw.length - 1)]
+  console.log(Math.floor(Math.random() * userpw.length) - 1);
   console.log(password);
+}
 }
 //need to return the result to idpassword
 //when this is not commented out the page doesn't work
@@ -87,7 +99,6 @@ for (var i = 0; i < pwlenght; i++){
 var userpw = ""
 var password = ""
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+
 
 
